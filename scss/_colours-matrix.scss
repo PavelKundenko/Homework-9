@@ -1,0 +1,28 @@
+$fontColors: (
+  brandColor: #4D4C49,
+  primaryColor: #4D4949,
+  secondaryWhiteColor: #FFF,
+  secondaryGreyColor: #818181,
+  darkGreyColor: #333
+);
+
+$backgroundColors: (
+  primaryBack: #4D4949,
+  whiteBack: #FFF,
+  quotationColor: #494A4D,
+  buttonHoverBack: #393737
+);
+
+$borderColors: (
+  greyBorder: #DDDDDD,
+  inputBorder: #DCDCDC,
+  errorInputBorder: #F06786,
+  lightGreyBorder: #E6E6E6
+);
+
+$gradients: (
+  greenGradient: #FFB0B0 linear-gradient(108.56deg, rgba(230, 246, 65, 0.5) 0%, rgba(41, 252, 154, 0.5) 100%),
+  blueGradient: #B0D1FF linear-gradient(236.77deg, rgba(247, 247, 247, 0.5) 0%, rgba(35, 86, 255, 0.5) 100%),
+  redGradient: #FFB0B0 linear-gradient(236.42deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 9, 9, 0.5) 100%)
+);
+

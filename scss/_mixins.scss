@@ -1,0 +1,55 @@
+@mixin headline($fontSize: $secondaryHeadlineFontSize, $lineHeight: $largeLineHeight, $fontFamily: HindSiliguriSemiBold) {
+  font-size: $fontSize;
+  color: map_get($fontColors, primaryColor);
+  line-height: $lineHeight;
+  font-family: $fontFamily;
+}
+
+@mixin paragraph($fontSize: $mediumFontSize, $lineHeight: $defaultLineHeight, $fontFamily: HindSiliguriRegular) {
+  color: map_get($fontColors, primaryColor);
+  font-family: $fontFamily, sans-serif;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+}
+
+@mixin button($darkButton: true) {
+  @if $darkButton {
+    color: map_get($fontColors, secondaryWhiteColor);
+    background-color: map_get($fontColors, primaryColor);
+  } @else {
+    color: map_get($fontColors, primaryColor);
+    background-color: transparent;
+  }
+  border: 1px solid map_get($fontColors, primaryColor);
+  padding: 10px 26px;
+  border-radius: 5px;
+  line-height: 25px;
+  font-size: $smallFontSize;
+  font-family: HindSiliguriRegular, sans-serif;
+  transition: all .1s;
+  &:hover {
+    cursor: pointer;
+    color: map_get($fontColors, secondaryWhiteColor);
+    border-color: map_get($backgroundColors, buttonHoverBack);
+    background-color: map_get($backgroundColors, buttonHoverBack);
+  }
+}
+
+@mixin arrowButton() {
+  width: 45px;
+  height: 45px;
+  background: map_get($fontColors, secondaryWhiteColor);
+  border-radius: 5px;
+  border: 1px solid map_get($fontColors, primaryColor);
+  cursor: pointer;
+  transition: .1s;
+  .arrow--rotateleft {
+    transform: rotateZ(90deg);
+  }
+  .arrow--rotateright {
+    transform: rotateZ(-90deg);
+  }
+  &:hover {
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+  }
+}
