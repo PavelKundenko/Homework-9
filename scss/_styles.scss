@@ -8,6 +8,10 @@ html {
   line-height: $defaultLineHeight;
   font-family: $HindRegular;
 }
+input:focus,
+button:focus {
+  outline: none;
+}
 
 .wrapper {
   position: relative;
