@@ -1388,6 +1388,17 @@ html {
   font-family: HindSiliguriRegular, sans-serif;
 }
 
+input:focus,
+button:focus {
+  outline: none;
+}
+
+.wrapper {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 77px;
+}
+
 .header-wrapper {
   width: 100%;
   background: url("../img/bg.jpg") no-repeat bottom;
@@ -1833,8 +1844,7 @@ html {
   width: 100%;
 }
 .latest-post__headline {
-  margin-top: 20px;
-  margin-bottom: 5px;
+  margin: 20px 0 5px;
 }
 .latest-post__headline-link {
   font-size: 20px;
@@ -2305,30 +2315,44 @@ html {
 .feedback__form .form__element {
   margin-top: 30px;
 }
-.feedback__form .form__label {
+.feedback__form .form__input {
+  margin-top: 5px;
+}
+.feedback__form .form__text {
+  margin-top: 40px;
+}
+.feedback__form .map {
+  width: 50%;
+}
+
+.form__label {
   position: relative;
   display: block;
   font-size: 16px;
   line-height: 28px;
 }
-.feedback__form .form__input {
-  margin-top: 5px;
+.form__input {
   height: 45px;
+  padding: 10px;
   width: 100%;
   border-radius: 5px;
-  padding: 10px;
   font-size: 15px;
   line-height: 25px;
   font-family: HindSiliguriRegular, sans-serif;
   border: 1px solid #DCDCDC;
 }
-.feedback__form .form__input:focus {
+.form__input:focus {
   border: 1px solid #4D4949;
 }
-.feedback__form .form__input--error {
+.form__input--error {
   border: 1px solid #F06786;
 }
-.feedback__form .form__submit {
+.form__radio-text {
+  font-size: 15px;
+  line-height: 25px;
+  font-family: HindSiliguriRegular, sans-serif;
+}
+.form__submit {
   color: #FFF;
   background-color: #4D4949;
   border: 1px solid #4D4949;
@@ -2339,25 +2363,38 @@ html {
   font-family: HindSiliguriRegular, sans-serif;
   transition: all 0.1s;
 }
-.feedback__form .form__submit:hover {
+.form__submit:hover {
   cursor: pointer;
   color: #FFF;
   border-color: #393737;
   background-color: #393737;
 }
-.feedback__form .form__text {
-  margin-top: 40px;
+.form__text {
   color: #4D4949;
   font-family: HindSiliguriRegular, sans-serif;
   font-size: 17px;
   line-height: 28px;
 }
-.feedback__form .form__text .email {
+.form__text .email {
   font-family: HindSiliguriBold, sans-serif;
   font-weight: 700;
   text-decoration: underline;
 }
-.feedback__form .form__show-password {
+.form__textarea {
+  height: 90px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 15px;
+  line-height: 25px;
+  font-family: HindSiliguriRegular, sans-serif;
+  border: 1px solid #DCDCDC;
+  resize: vertical;
+}
+.form__textarea:focus {
+  border: 1px solid #4D4949;
+}
+.form__show-password, .form__show-help {
   position: absolute;
   right: 0;
   font-size: 14px;
@@ -2365,11 +2402,45 @@ html {
   color: #4D4949;
   cursor: pointer;
 }
-.feedback__form .map {
-  width: 50%;
+.form__show-help:hover {
+  text-decoration: underline;
+}
+.form__help {
+  margin: 15px 0;
+}
+.form__help--hidden {
+  display: none;
+}
+.form__help-headline {
+  font-size: 17px;
+  color: #4D4949;
+  line-height: 28px;
+  font-family: HindSiliguriRegular, sans-serif;
+  margin-bottom: 10px;
+}
+.form__help-list {
+  padding-left: 20px;
+}
+
+.create-post-form {
+  margin: 70px 0;
+}
+.create-post-form .form__radio-buttons .form__element {
+  margin-top: 10px;
+}
+.create-post-form .form__element {
+  margin-top: 30px;
+}
+.create-post-form .form__input {
+  width: 30%;
+}
+.create-post-form .form__select {
+  width: 30%;
 }
 
 .footer {
+  position: absolute;
+  bottom: 0;
   width: 100%;
   border-top: 1px solid #DDDDDD;
 }
@@ -2535,6 +2606,7 @@ html {
 .post__image {
   width: 100%;
   height: 100%;
+  border-radius: 5px;
 }
 .post__info {
   display: flex;
@@ -2577,12 +2649,6 @@ html {
   font-family: HindSiliguriMedium, sans-serif;
   font-weight: 500;
 }
-.post__text {
-  color: #4D4949;
-  font-family: HindSiliguriRegular, sans-serif;
-  font-size: 17px;
-  line-height: 26px;
-}
 .post__read-more {
   color: #4D4949;
   background-color: transparent;
@@ -2621,7 +2687,7 @@ html {
   line-height: 39px;
   font-family: HindSiliguriSemiBold;
 }
-.post__term {
+.post__blockquote {
   border-left: 5px solid;
   color: #4D4949;
   font-family: HindSiliguriLight, sans-serif, sans-serif;
@@ -2911,8 +2977,7 @@ html {
   margin-top: 20px;
 }
 .large-post .post__audio {
-  margin-top: 15px;
-  margin-bottom: 10px;
+  margin: 15px 0 10px;
   height: 54px;
 }
 .large-post .post__text {
@@ -2921,7 +2986,7 @@ html {
 .large-post .post__secondary-headline {
   margin: 35px 0 10px;
 }
-.large-post .post__term {
+.large-post .post__blockquote {
   padding: 8px 26px;
 }
 .large-post .post__footer {
@@ -2936,9 +3001,7 @@ html {
 .large-post .post__comments-list {
   margin-top: 20px;
   margin-left: 39px;
-  padding-top: 40px;
-  padding-left: 54px;
-  padding-bottom: 40px;
+  padding: 40px 0 40px 54px;
   border-left: 2px solid #DDDDDD;
   list-style: none;
   position: relative;
@@ -3071,8 +3134,7 @@ html {
   line-height: 23px;
   font-family: HindSiliguriMedium, sans-serif;
   font-weight: 500;
-  margin-top: 32px;
-  margin-bottom: 20px;
+  margin: 32px 0 20px;
 }
 .aside-block__button-container {
   margin-top: 30px;

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/main.css">
+  <title>Create post</title>
+</head>
+<body>
+<div class="wrapper">
+  <div class="container">
+    <header class="header" id="home">
+      <h2 class="header__headline brand-headline"><a class="brand-headline__link" href="#">BlogWorld</a></h2>
+      <nav class="header__navbar navbar">
+        <ul class="navbar__list">
+          <li class="navbar__list-item"><a href="#home" class="navbar__link">Home</a></li>
+          <li class="navbar__list-item"><a href="#portfolioSection" class="navbar__link">Portfolio</a></li>
+          <li class="navbar__list-item"><a href="#latestPostsSection" class="navbar__link">Blog</a></li>
+          <li class="navbar__list-item"><a href="#" class="navbar__link">Pages</a></li>
+          <li class="navbar__list-item"><a href="#aboutSection" class="navbar__link">About</a></li>
+          <li class="navbar__list-item"><a href="#contanctSection" class="navbar__link">Contact</a></li>
+        </ul>
+        <div class="navbar__burger">&equiv;</div>
+      </nav>
+    </header>
+    <main class="main">
+      <section class="info-section">
+        <h2 class="info-section__headline">Create post<span class="headline-underline"></span></h2>
+        <form class="create-post-form form" id="create-post-form">
+          <div class="form__element">
+            <label class="form__label" for="post-title">Post title:</label>
+            <input class="form__input" type="text" id="post-title" name="post-title">
+          </div>
+          <div class="form__element">
+            <label class="form__label" for="author-name">Author name:</label>
+            <input class="form__input" type="text" id="author-name">
+          </div>
+          <div class="form__element">
+            <label class="form__label" for="post-picture">Picture link:</label>
+            <input class="form__input" type="text" id="post-picture" name="post-picture">
+          </div>
+          <div class="form__element">
+            <label class="form__label">Select post type:</label>
+              <div class="form__radio-buttons">
+                <div class="form__element">
+                  <input class="form__radio" type="radio" name="post-type" value="video">
+                  <span class="form__radio-text">Video</span>
+                </div>
+                <div class="form__element">
+                  <input class="form__radio" type="radio" name="post-type" value="audio">
+                  <span class="form__radio-text">Audio</span>
+                </div>
+                <div class="form__element">
+                  <input class="form__radio" type="radio" name="post-type" value="text">
+                  <span class="form__radio-text">Text</span>
+                </div>
+                <div class="form__element">
+                  <input class="form__radio" type="radio" name="post-type" value="photo">
+                  <span class="form__radio-text">Photo</span>
+                </div>
+              </div>
+          </div>
+          <div class="form__element">
+            <label class="form__label" for="post-content">Post text
+              <span class="form__show-help" id="help-btn">Help</span>
+            </label>
+            <div class="form__help form__help--hidden">
+              <h3 class="form__help-headline">Use HTML tags to mark up text:</h3>
+              <ol class="form__help-list">
+                <li class="form__help-item">&lt;p&gt;text&lt;/p&gt; — paragraph</li>
+                <li class="form__help-item">&lt;h2&gt;text&lt;/h2&gt; — headline</li>
+                <li class="form__help-item">&lt;b&gt;text&lt;/b&gt; — bold text</li>
+                <li class="form__help-item">&lt;i&gt;text&lt;/i&gt; — italic text</li>
+                <li class="form__help-item">&lt;s&gt;text&lt;/s&gt; — stroked text</li>
+                <li class="form__help-item">&lt;s&gt;text&lt;/s&gt; — stroked text</li>
+                <li class="form__help-item">&lt;u&gt;text&lt;/u&gt; — underlined text</li>
+              </ol>
+            </div>
+            <textarea class="form__textarea" name="post-content" id="post-content"></textarea>
+          </div>
+          <div class="form__element">
+            <label class="form__label" for="post-quotation">Quotation: </label>
+            <textarea class="form__textarea" id="post-quotation" name="post-quotation"></textarea>
+          </div>
+          <div class="form__element">
+            <input class="form__submit" type="submit" value="Create" id="create-post-btn">
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-content__icons icons">
+          <img src="img/a-icon-facebook.svg" alt="Social Icon" class="icon">
+          <img src="img/a-icon-instagram.svg" alt="Social Icon" class="icon">
+          <img src="img/a-icon-dribbble.svg" alt="Social Icon" class="icon">
+        </div>
+        <h2 class="footer-content__headline brand-headline"><a class="brand-headline__link" href="#">BlogWorld</a></h2>
+        <p class="footer-content__rights">&copy;2019 All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+<script type="module" src="js/create-post.js"></script>
+</body>
+</html>
