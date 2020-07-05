@@ -1,4 +1,4 @@
-import { convertRateToHtml, formatDate } from '../helpers/formatUtils.js';
+import { convertRateToHtml, formatDate } from '../helpers/format-utils.js';
 
 export const postComponent = ({ title, author, date, pictureLink, description, quotation, comments, type, timeToRead, rate }) => `
    <article class="post large-post">

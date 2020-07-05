@@ -1,4 +1,4 @@
-import { formatDate, formatShortDescription, convertRateToHtml } from '../helpers/formatUtils.js';
+import { formatDate, formatShortDescription, convertRateToHtml } from '../helpers/format-utils.js';
 
 export const blogPostComponent = ({ id, title, author, description, pictureLink, type, date, timeToRead, comments, rate }) => `
   <div class="post blog-post blog-post--${type}-post" data-id="${id}">

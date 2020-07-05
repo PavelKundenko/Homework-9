@@ -1,4 +1,4 @@
-import { generateUuid, countTimeForReading } from './helpers/countUtils.js';
+import { generateUuid, countTimeForReading } from './helpers/count-utils.js';
 import { ApiClient } from './helpers/api-client.js';
 const apiClient = new ApiClient();
 const helpBtn = document.getElementById('help-btn');
