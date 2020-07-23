@@ -269,7 +269,8 @@ button:focus {
   @include make-sm-column(10);
   @include make-md-column-offset(0);
   @include make-md-column(4);
-
+  min-height: 442px;
+  position: relative;
   &__picture {
     width: 100%;
   }
@@ -296,7 +297,8 @@ button:focus {
     font-size: $smallFontSize;
     line-height: 25px;
     color: map_get($fontColors, secondaryGreyColor);
-
+    position: absolute;
+    bottom: 0;
     .middot {
       font-size: $largeFontSize;
     }
@@ -1058,6 +1060,10 @@ button:focus {
     margin-bottom: 25px;
   }
 
+  .post__image-container {
+    margin-bottom: 15px;
+  }
+
   .post__info {
     margin-top: 25px;
   }
@@ -1081,7 +1087,7 @@ button:focus {
   }
 
   .post__audio {
-    margin: 15px 0 10px;
+    margin-bottom: 10px;
     height: 54px;
   }
 
@@ -1202,6 +1208,20 @@ button:focus {
     padding-left: 85px;
     display: flex;
     justify-content: center;
+  }
+}
+
+.large-post--video-post {
+  .post__image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .post__image-container::after {
+    content: url("../img/a-icon-play.svg");
+    position: absolute;
   }
 }
 

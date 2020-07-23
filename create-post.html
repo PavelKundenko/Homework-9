@@ -28,40 +28,40 @@
         <h2 class="info-section__headline">Create post<span class="headline-underline"></span></h2>
         <form class="create-post-form form" id="create-post-form">
           <div class="form__element">
-            <label class="form__label" for="post-title">Post title:</label>
-            <input class="form__input" type="text" id="post-title" name="post-title">
+            <label class="form__label" for="post-title">LargePost title:</label>
+            <input class="form__input" type="text" id="post-title" name="post-title" required>
           </div>
           <div class="form__element">
             <label class="form__label" for="author-name">Author name:</label>
-            <input class="form__input" type="text" id="author-name">
+            <input class="form__input" type="text" id="author-name" required>
           </div>
           <div class="form__element">
             <label class="form__label" for="post-picture">Picture link:</label>
-            <input class="form__input" type="text" id="post-picture" name="post-picture">
+            <input class="form__input" type="text" id="post-picture" name="post-picture" required>
           </div>
           <div class="form__element">
             <label class="form__label">Select post type:</label>
               <div class="form__radio-buttons">
                 <div class="form__element">
-                  <input class="form__radio" type="radio" name="post-type" value="video">
+                  <input class="form__radio" type="radio" name="post-type" value="video" required>
                   <span class="form__radio-text">Video</span>
                 </div>
                 <div class="form__element">
-                  <input class="form__radio" type="radio" name="post-type" value="audio">
+                  <input class="form__radio" type="radio" name="post-type" value="audio" required>
                   <span class="form__radio-text">Audio</span>
                 </div>
                 <div class="form__element">
-                  <input class="form__radio" type="radio" name="post-type" value="text">
+                  <input class="form__radio" type="radio" name="post-type" value="text" required>
                   <span class="form__radio-text">Text</span>
                 </div>
                 <div class="form__element">
-                  <input class="form__radio" type="radio" name="post-type" value="photo">
+                  <input class="form__radio" type="radio" name="post-type" value="photo" required>
                   <span class="form__radio-text">Photo</span>
                 </div>
               </div>
           </div>
           <div class="form__element">
-            <label class="form__label" for="post-content">Post text
+            <label class="form__label" for="post-content">LargePost text
               <span class="form__show-help" id="help-btn">Help</span>
             </label>
             <div class="form__help form__help--hidden">
@@ -72,11 +72,10 @@
                 <li class="form__help-item">&lt;b&gt;text&lt;/b&gt; — bold text</li>
                 <li class="form__help-item">&lt;i&gt;text&lt;/i&gt; — italic text</li>
                 <li class="form__help-item">&lt;s&gt;text&lt;/s&gt; — stroked text</li>
-                <li class="form__help-item">&lt;s&gt;text&lt;/s&gt; — stroked text</li>
                 <li class="form__help-item">&lt;u&gt;text&lt;/u&gt; — underlined text</li>
               </ol>
             </div>
-            <textarea class="form__textarea" name="post-content" id="post-content"></textarea>
+            <textarea class="form__textarea" name="post-content" id="post-content" required></textarea>
           </div>
           <div class="form__element">
             <label class="form__label" for="post-quotation">Quotation: </label>

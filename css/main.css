@@ -1817,6 +1817,8 @@ button:focus {
   min-height: 1px;
   padding-right: 20px;
   padding-left: 20px;
+  min-height: 442px;
+  position: relative;
 }
 @media (min-width: 768px) {
   .latest-post {
@@ -1867,6 +1869,8 @@ button:focus {
   font-size: 15px;
   line-height: 25px;
   color: #818181;
+  position: absolute;
+  bottom: 0;
 }
 .latest-post__details .middot {
   font-size: 20px;
@@ -2976,6 +2980,9 @@ button:focus {
   margin-top: 0;
   margin-bottom: 25px;
 }
+.large-post .post__image-container {
+  margin-bottom: 15px;
+}
 .large-post .post__info {
   margin-top: 25px;
 }
@@ -2992,7 +2999,7 @@ button:focus {
   margin-top: 20px;
 }
 .large-post .post__audio {
-  margin: 15px 0 10px;
+  margin-bottom: 10px;
   height: 54px;
 }
 .large-post .post__text {
@@ -3091,6 +3098,17 @@ button:focus {
   padding-left: 85px;
   display: flex;
   justify-content: center;
+}
+
+.large-post--video-post .post__image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.large-post--video-post .post__image-container::after {
+  content: url("../img/a-icon-play.svg");
+  position: absolute;
 }
 
 .sidebar {
