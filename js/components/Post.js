@@ -1,7 +1,7 @@
 export class Post {
   constructor (postContainer, postData) {
-    this.postContainer = postContainer;
-    this.postData = postData;
+    this._postContainer = postContainer;
+    this._postData = postData;
   }
 
   formatDate = date => {
@@ -27,5 +27,5 @@ export class Post {
     return rateHtml;
   };
 
-  renderPost = () => this.postContainer.insertAdjacentHTML('afterbegin', '');
+  renderPost = () => this._postContainer.insertAdjacentHTML('afterbegin', '');
 }

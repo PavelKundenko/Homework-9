@@ -19,7 +19,7 @@ export class BlogPost extends Post {
   };
 
   renderPost = () => {
-    const { id, title, author, authorAvatar, description, pictureLink, type, date, timeToRead, comments, rate } = this.postData;
+    const { id, title, author, authorAvatar, description, pictureLink, type, date, timeToRead, comments, rate } = this._postData;
     const postHTML = `
       <div class="post blog-post blog-post--${type}-post" data-id="${id}">
         ${
@@ -50,6 +50,6 @@ export class BlogPost extends Post {
         </article>
       </div>
     `;
-    this.postContainer.insertAdjacentHTML('beforeend', postHTML);
+    this._postContainer.insertAdjacentHTML('beforeend', postHTML);
   };
 }

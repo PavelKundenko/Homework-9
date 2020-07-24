@@ -8,7 +8,7 @@ export class LatestPost extends Post {
   };
 
   renderPost = () => {
-    const { id, title, date, pictureLink, description, comments, type, timeToRead } = this.postData;
+    const { id, title, date, pictureLink, description, comments, type, timeToRead } = this._postData;
     const postHtml = `
       <article class="latest-post latest-post--${type}-post">
         ${pictureLink ? `<img class="latest-post__picture" src="${pictureLink}" alt="LargePost Image">` : ''}
@@ -21,6 +21,6 @@ export class LatestPost extends Post {
         </div>
       </article>
     `;
-    this.postContainer.insertAdjacentHTML('beforeend', postHtml);
+    this._postContainer.insertAdjacentHTML('beforeend', postHtml);
   }
 }

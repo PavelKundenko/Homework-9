@@ -16,7 +16,7 @@ export class LargePost extends Post {
     }
   };
 
-  renderComments = () => this.postData.comments.reduce((prevComments, { author, authorAvatar, text, rate, date }, index, comments) => prevComments + `
+  renderComments = () => this._postData.comments.reduce((prevComments, { author, authorAvatar, text, rate, date }, index, comments) => prevComments + `
     <li class="post__comment ${index + 1 === comments.length ? 'post__comment--last' : ''}">
       <img src="${authorAvatar}" alt="Comment author avatar" class="post__comment-author-avatar">
       <div class="post__comment-info">
@@ -32,7 +32,7 @@ export class LargePost extends Post {
   `, '');
 
   renderPost = () => {
-    const { title, author, authorAvatar, date, pictureLink, description, quotation, comments, type, timeToRead, rate } = this.postData;
+    const { title, author, authorAvatar, date, pictureLink, description, quotation, comments, type, timeToRead, rate } = this._postData;
     const postHTML = `
       <article class="post large-post large-post--${type}-post">
          <h1 class="post__primary-headline">${title}</h1>
@@ -83,6 +83,6 @@ export class LargePost extends Post {
         </footer>
        </article>
     `;
-    this.postContainer.insertAdjacentHTML('afterbegin', postHTML);
+    this._postContainer.insertAdjacentHTML('afterbegin', postHTML);
   };
 }
