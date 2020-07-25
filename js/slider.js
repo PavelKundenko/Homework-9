@@ -1,12 +1,21 @@
-function Slider ({ slidesContainer, nextControl, prevControl, slideShow = true, moving = true, slideShowDelay = 3000 }) {
+function Slider ({ slidesContainer, nextControl, prevControl }) {
   this.slidesContainer = slidesContainer;
   this.btnNext = nextControl;
   this.btnPrev = prevControl;
-  this.slideShowDelay = slideShowDelay;
-  this.slidesOffset = 0;
   this.isSwitching = false;
   this.activeItem = 0;
   this.managingWithButtons();
+
+  const slides = [...slidesContainer.children];
+  this.slideWidth = slides[0].clientWidth;
+  this.slidesOffset = -this.slideWidth;
+
+  slides.forEach(slide => {
+    slide.style.transform = `translateX(${this.slidesOffset}px)`;
+  });
+
+  this.slidesContainer.insertBefore(slides[slides.length - 1].cloneNode(true), slides[0]);
+  this.slidesContainer.removeChild(slides[slides.length - 1]);
 }
 
 Slider.prototype.managingWithButtons = function () {
@@ -26,9 +35,9 @@ Slider.prototype.infiniteSwitchSlide = function (direction) {
         slide.style.transform = `translateX(${this.slidesOffset}px)`;
       });
 
-      if (Math.abs(this.slidesOffset) >= slides[0].clientWidth) {
+      if (Math.abs(this.slidesOffset) >= slides[0].clientWidth * 2 || Math.abs(this.slidesOffset) === 0) {
         clearInterval(animationMove);
-        this.slidesOffset = 0;
+        this.slidesOffset = -this.slideWidth;
 
         slides.forEach(slide => {
           slide.style.transform = `translateX(${this.slidesOffset}px)`;
@@ -51,16 +60,15 @@ const slider1Config = {
   slidesContainer: document.querySelector('.portfolio__slider'),
   nextControl: document.querySelector('.portfolio-controllers__arrow--next'),
   prevControl: document.querySelector('.portfolio-controllers__arrow--prev'),
-  slideShowDelay: 5000
 };
 
 const movingSlider = new Slider(slider1Config);
 movingSlider.slideShow = function () {
-  this.slideShowInterval = setInterval(() => this.infiniteSwitchSlide(-1), this.slideShowDelay);
+  this.slideShowInterval = setInterval(() => this.infiniteSwitchSlide(-1), 5000);
   this.slidesContainer.addEventListener('mouseover', () => {
     clearInterval(this.slideShowInterval);
     this.slidesContainer.addEventListener('mouseout', () => {
-      this.slideShowInterval = setInterval(() => this.infiniteSwitchSlide(-1), this.slideShowDelay);
+      this.slideShowInterval = setInterval(() => this.infiniteSwitchSlide(-1), 5000);
     }, { once: true });
   });
 };
@@ -111,7 +119,6 @@ fadingSlider.fadingSwipe = function (direction) {
     }
 
     this.slidesMarkers[this.activeItem].classList.add('slider-counter__circle--chosen');
-    console.log(this.activeItem);
 
     this.slidesContainer.style.opacity = '0';
     setTimeout(() => {
