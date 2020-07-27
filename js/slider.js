@@ -59,7 +59,7 @@ Slider.prototype.infiniteSwitchSlide = function (direction) {
 const slider1Config = {
   slidesContainer: document.querySelector('.portfolio__slider'),
   nextControl: document.querySelector('.portfolio-controllers__arrow--next'),
-  prevControl: document.querySelector('.portfolio-controllers__arrow--prev'),
+  prevControl: document.querySelector('.portfolio-controllers__arrow--prev')
 };
 
 const movingSlider = new Slider(slider1Config);

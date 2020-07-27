@@ -27,9 +27,14 @@ createPostForm.addEventListener('submit', async event => {
   const postTitleField = document.getElementById('post-title');
 
   if (postTitleRegExp.test(postTitleField.value)) {
-    const formattedPostContent = createPostForm['post-content'].value
+    let postContent = createPostForm['post-content'].value;
+    const paragraphRegExp = /<[/p]+>/gmi;
+    if (!paragraphRegExp.test(postContent)) {
+      postContent = `<p class="post__text">${postContent}</p>`;
+    }
+    const formattedPostContent = postContent
       .replace(/<p>/gm, '<p class="post__text">')
-      .replace(/<h2>/gm, '<h2 class="post__secondary-headline">');
+      .replace(/<h[1-5]>/gm, '<h2 class="post__secondary-headline">');
 
     const postData = {
       id: await getPostsLength(),
@@ -43,7 +48,7 @@ createPostForm.addEventListener('submit', async event => {
       quotation: createPostForm['post-quotation'].value,
       date: new Date(),
       timeToRead: countTimeForReading(createPostForm['post-content'].value + createPostForm['post-quotation'].value),
-      comments: [],
+      comments: []
     };
 
     apiClient
