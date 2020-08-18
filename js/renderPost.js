@@ -1,5 +1,5 @@
 import { LargePost } from './components/LargePost.js';
-import { ApiClient } from './helpers/api-client.js';
+import { ApiClient } from './helpers/ApiClient.js';
 const apiClient = new ApiClient();
 
 const postId = location.href.split('id=')[1];

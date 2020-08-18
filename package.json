@@ -18,8 +18,7 @@
     "eslint-plugin-standard": "^4.0.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Pavel Kundenko",
   "license": "ISC"

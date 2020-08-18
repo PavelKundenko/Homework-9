@@ -29,36 +29,29 @@
         <form class="create-post-form form" id="create-post-form">
           <div class="form__element">
             <label class="form__label" for="post-title">Post title:</label>
-            <input class="form__input" type="text" id="post-title" name="post-title" required>
+            <input class="form__input" type="text" id="post-title" name="title" required>
           </div>
           <div class="form__element">
             <label class="form__label" for="author-name">Author name:</label>
-            <input class="form__input" type="text" id="author-name" required>
+            <input class="form__input" type="text" id="author-name" name="author" required>
           </div>
           <div class="form__element">
             <label class="form__label" for="post-picture">Picture link:</label>
-            <input class="form__input" type="text" id="post-picture" name="post-picture" required>
+            <input class="form__input" type="text" id="post-picture" name="pictureLink" required>
           </div>
           <div class="form__element">
-            <label class="form__label">Select post type:</label>
-              <div class="form__radio-buttons">
-                <div class="form__element">
-                  <input class="form__radio" type="radio" name="post-type" value="video" required>
-                  <span class="form__radio-text">Video</span>
-                </div>
-                <div class="form__element">
-                  <input class="form__radio" type="radio" name="post-type" value="audio" required>
-                  <span class="form__radio-text">Audio</span>
-                </div>
-                <div class="form__element">
-                  <input class="form__radio" type="radio" name="post-type" value="text" required>
-                  <span class="form__radio-text">Text</span>
-                </div>
-                <div class="form__element">
-                  <input class="form__radio" type="radio" name="post-type" value="photo" required>
-                  <span class="form__radio-text">Photo</span>
-                </div>
-              </div>
+            <label class="form__label" for="post-date">Post date: </label>
+            <input class="form__date" type="date" id="post-date" name="date" required>
+          </div>
+          <div class="form__element">
+            <label class="form__label" for="post-type">Select post type:</label>
+            <select class="form__select" name="type" id="post-type" required>
+              <option class="form__option" value="" disabled selected hidden>Type</option>
+              <option class="form__option" value="audio">Audio</option>
+              <option class="form__option" value="video">Video</option>
+              <option class="form__option" value="photo">Photo</option>
+              <option class="form__option" value="text">Text</option>
+            </select>
           </div>
           <div class="form__element">
             <label class="form__label" for="post-content">Post text
@@ -75,15 +68,16 @@
                 <li class="form__help-item">&lt;u&gt;text&lt;/u&gt; — underlined text</li>
               </ol>
             </div>
-            <textarea class="form__textarea" name="post-content" id="post-content" required></textarea>
+            <textarea class="form__textarea" name="description" id="post-content" required></textarea>
           </div>
           <div class="form__element">
             <label class="form__label" for="post-quotation">Quotation: </label>
-            <textarea class="form__textarea" id="post-quotation" name="post-quotation"></textarea>
+            <textarea class="form__textarea" id="post-quotation" name="quotation"></textarea>
           </div>
           <div class="form__element">
             <input class="form__submit" type="submit" value="Create" id="create-post-btn">
           </div>
+          <p class="form__errors"></p>
         </form>
       </section>
     </main>
@@ -102,6 +96,6 @@
     </div>
   </footer>
 </div>
-<script type="module" src="js/createPost.js"></script>
+<script type="module" src="js/postCreator.js"></script>
 </body>
 </html>

@@ -10,7 +10,9 @@ html {
 }
 
 input:focus,
-button:focus {
+button:focus,
+select:focus,
+textarea:focus {
   outline: none;
 }
 
@@ -640,7 +642,9 @@ button:focus {
     line-height: $largeLineHeight;
   }
 
-  &__input {
+  &__input,
+  &__select,
+  &__date {
     height: 45px;
     padding: 10px;
     width: 100%;
@@ -651,18 +655,19 @@ button:focus {
     border: 1px solid map_get($borderColors, inputBorder);
   }
 
-  &__input:focus {
+  &__select:focus {
+    border: 1px solid map_get($fontColors, primaryColor);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &__input:focus,
+  &__textarea:focus {
     border: 1px solid map_get($fontColors, primaryColor);
   }
 
   &__input--error {
     border: 1px solid map_get($borderColors, errorInputBorder);
-  }
-
-  &__radio-text {
-    font-size: $smallFontSize;
-    line-height: 25px;
-    font-family: $HindRegular;
   }
 
   &__submit {
@@ -689,10 +694,6 @@ button:focus {
     font-family: $HindRegular;
     border: 1px solid map_get($borderColors, inputBorder);
     resize: vertical;
-  }
-
-  &__textarea:focus {
-    border: 1px solid map_get($fontColors, primaryColor);
   }
 
   &__show-password,
@@ -726,28 +727,27 @@ button:focus {
     padding-left: 20px;
   }
 
+  &__errors {
+    @include paragraph();
+    color: map_get($fontColors, errorColor);
+  }
 }
 
 .create-post-form {
   margin: 70px 0;
 
   .form {
-    &__radio-buttons {
-      .form__element {
-        margin-top: 10px;
-      }
-    }
-
     &__element {
       margin-top: 30px;
     }
 
-    &__input {
-      width: 30%;
-    }
-
+    &__input,
+    &__date,
     &__select {
       width: 30%;
+    }
+    &__errors {
+      margin-top: 30px;
     }
   }
 }

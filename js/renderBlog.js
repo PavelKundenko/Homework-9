@@ -1,5 +1,5 @@
 import { BlogPost } from './components/BlogPost.js';
-import { ApiClient } from './helpers/api-client.js';
+import { ApiClient } from './helpers/ApiClient.js';
 
 const apiClient = new ApiClient();
 const blogPostsContainer = document.querySelector('.blog__posts');

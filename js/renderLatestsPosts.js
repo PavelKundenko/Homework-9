@@ -1,4 +1,4 @@
-import { ApiClient } from './helpers/api-client.js';
+import { ApiClient } from './helpers/ApiClient.js';
 import { LatestPost } from './components/LatestPost.js';
 
 const apiClient = new ApiClient();
