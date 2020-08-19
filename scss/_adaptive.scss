@@ -7,6 +7,9 @@
   .next-instructions__headline {
     margin-top: 30px;
   }
+  .portfolio-container .photo-card {
+    min-width: 100%;
+  }
   .blog-post {
     .post__type {
       top: auto;
@@ -34,19 +37,19 @@
     width: 90%;
   }
 
-  .testimonial {
+  .testimonials {
     &__quotation {
       padding: 30px 10px 10px 30px;
     }
   }
 
-  .testimonial__arrow--left {
+  .testimonials__arrow--left {
     bottom: -50px;
     left: 10px;
     display: none;
   }
 
-  .testimonial__arrow--right {
+  .testimonials__arrow--right {
     display: none;
   }
 }
@@ -65,7 +68,7 @@
     }
   }
 
-  .testimonial {
+  .testimonials {
     flex-direction: column;
     height: min-content;
 

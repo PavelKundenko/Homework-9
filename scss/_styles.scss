@@ -8,8 +8,11 @@ html {
   line-height: $defaultLineHeight;
   font-family: $HindRegular;
 }
+
 input:focus,
-button:focus {
+button:focus,
+select:focus,
+textarea:focus {
   outline: none;
 }
 
@@ -268,7 +271,8 @@ button:focus {
   @include make-sm-column(10);
   @include make-md-column-offset(0);
   @include make-md-column(4);
-
+  min-height: 442px;
+  position: relative;
   &__picture {
     width: 100%;
   }
@@ -295,7 +299,8 @@ button:focus {
     font-size: $smallFontSize;
     line-height: 25px;
     color: map_get($fontColors, secondaryGreyColor);
-
+    position: absolute;
+    bottom: 0;
     .middot {
       font-size: $largeFontSize;
     }
@@ -304,20 +309,23 @@ button:focus {
 
 .portfolio-container {
   @include make-row();
+  overflow: hidden;
 }
 
+.portfolio__slider {
+  display: flex;
+}
 .photo-card {
   @include make-sm-column-offset(1);
   @include make-sm-column(10);
   @include make-md-column-offset(0);
   @include make-md-column(4);
+  min-width: calc(100% / 3);
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   text-align: center;
-  transition: all .1s;
-
+  cursor: pointer;
   &__content {
     position: absolute;
   }
@@ -393,24 +401,53 @@ button:focus {
   }
 }
 
-.testimonials-container {
+.testimonials-wrapper {
   background: url("../img/Bg testimonial.png") no-repeat;
   background-size: cover;
 }
 
-.testimonial {
+.testimonials {
+  margin: 55px 0 80px;
+  position: relative;
+  display: flex;
+  align-items: center;
   @include make-sm-column-offset(1);
   @include make-sm-column(10);
   @include make-md-column(8);
   @include make-md-column-offset(2);
   @include make-lg-column(6);
   @include make-lg-column-offset(3);
-  margin: 55px 0 80px;
-  display: flex;
-  align-items: center;
-  position: relative;
-  height: 265px;
-  padding: 0 10px;
+  &__slider {
+    display: flex;
+    height: 265px;
+    overflow: hidden;
+  }
+
+  .slider-counter {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    &__circle {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid map_get($fontColors, brandColor);
+      margin: 0 3px;
+    }
+    &__circle--chosen {
+      background-color: map_get($fontColors, brandColor);
+    }
+  }
+
+  &__card {
+    min-width: 100%;
+    height: 265px;
+    padding: 0 10px;
+    display: flex;
+    cursor: pointer;
+  }
 
   &__quotation {
     border-bottom-left-radius: 5px;
@@ -421,6 +458,9 @@ button:focus {
     background-color: map_get($backgroundColors, quotationColor);
     color: map_get($fontColors, secondaryWhiteColor);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   &__text {
@@ -441,7 +481,6 @@ button:focus {
   }
 
   &__author {
-    margin-top: 37px;
     line-height: 25px;
   }
 
@@ -579,55 +618,12 @@ button:focus {
         margin-top: 30px;
       }
 
-      &__label {
-        position: relative;
-        display: block;
-        font-size: 16px;
-        line-height: $largeLineHeight;
-      }
-
       &__input {
         margin-top: 5px;
-        height: 45px;
-        width: 100%;
-        border-radius: 5px;
-        padding: 10px;
-        font-size: $smallFontSize;
-        line-height: 25px;
-        font-family: $HindRegular;
-        border: 1px solid map_get($borderColors, inputBorder);
-      }
-
-      &__input:focus {
-        border: 1px solid map_get($fontColors, primaryColor);
-      }
-
-      &__input--error {
-        border: 1px solid map_get($borderColors, errorInputBorder);
-      }
-
-      &__submit {
-        @include button();
       }
 
       &__text {
         margin-top: 40px;
-        @include paragraph($lineHeight: $largeLineHeight);
-
-        .email {
-          font-family: $HindBold;
-          font-weight: 700;
-          text-decoration: underline;
-        }
-      }
-
-      &__show-password {
-        position: absolute;
-        right: 0;
-        font-size: 14px;
-        line-height: 23px;
-        color: map_get($fontColors, primaryColor);
-        cursor: pointer;
       }
     }
 
@@ -636,6 +632,124 @@ button:focus {
     }
   }
 
+}
+
+.form {
+  &__label {
+    position: relative;
+    display: block;
+    font-size: 16px;
+    line-height: $largeLineHeight;
+  }
+
+  &__input,
+  &__select,
+  &__date {
+    height: 45px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: $smallFontSize;
+    line-height: 25px;
+    font-family: $HindRegular;
+    border: 1px solid map_get($borderColors, inputBorder);
+  }
+
+  &__select:focus {
+    border: 1px solid map_get($fontColors, primaryColor);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &__input:focus,
+  &__textarea:focus {
+    border: 1px solid map_get($fontColors, primaryColor);
+  }
+
+  &__input--error {
+    border: 1px solid map_get($borderColors, errorInputBorder);
+  }
+
+  &__submit {
+    @include button();
+  }
+
+  &__text {
+    @include paragraph($lineHeight: $largeLineHeight);
+
+    .email {
+      font-family: $HindBold;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+  }
+
+  &__textarea {
+    height: 90px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: $smallFontSize;
+    line-height: 25px;
+    font-family: $HindRegular;
+    border: 1px solid map_get($borderColors, inputBorder);
+    resize: vertical;
+  }
+
+  &__show-password,
+  &__show-help {
+    position: absolute;
+    right: 0;
+    font-size: 14px;
+    line-height: 23px;
+    color: map_get($fontColors, primaryColor);
+    cursor: pointer;
+  }
+
+  &__show-help:hover {
+    text-decoration: underline;
+  }
+
+  &__help {
+    margin: 15px 0;
+  }
+
+  &__help--hidden {
+    display: none;
+  }
+
+  &__help-headline {
+    @include headline($mediumFontSize, $fontFamily: $HindRegular);
+    margin-bottom: 10px;
+  }
+
+  &__help-list {
+    padding-left: 20px;
+  }
+
+  &__errors {
+    @include paragraph();
+    color: map_get($fontColors, errorColor);
+  }
+}
+
+.create-post-form {
+  margin: 70px 0;
+
+  .form {
+    &__element {
+      margin-top: 30px;
+    }
+
+    &__input,
+    &__date,
+    &__select {
+      width: 30%;
+    }
+    &__errors {
+      margin-top: 30px;
+    }
+  }
 }
 
 .footer {
@@ -722,6 +836,7 @@ button:focus {
   &__image {
     width: 100%;
     height: 100%;
+    border-radius: 5px;
   }
 
   &__info {
@@ -767,10 +882,6 @@ button:focus {
     font-weight: 500;
   }
 
-  &__text {
-    @include paragraph();
-  }
-
   &__read-more {
     @include button(false);
   }
@@ -792,7 +903,7 @@ button:focus {
     @include headline($secondaryHeadlineFontSize, $primaryHeadlineLineHeight);
   }
 
-  &__term {
+  &__blockquote {
     border-left: 5px solid map_get($fontColors, lightGreyBorder);
     @include paragraph($fontFamily: $HindLight);
     width: 85%;
@@ -968,6 +1079,10 @@ button:focus {
     margin-bottom: 25px;
   }
 
+  .post__image-container {
+    margin-bottom: 15px;
+  }
+
   .post__info {
     margin-top: 25px;
   }
@@ -991,7 +1106,7 @@ button:focus {
   }
 
   .post__audio {
-    margin: 15px 0 10px;
+    margin-bottom: 10px;
     height: 54px;
   }
 
@@ -1003,7 +1118,7 @@ button:focus {
     margin: 35px 0 10px;
   }
 
-  .post__term {
+  .post__blockquote {
     padding: 8px 26px;
   }
 
@@ -1112,6 +1227,20 @@ button:focus {
     padding-left: 85px;
     display: flex;
     justify-content: center;
+  }
+}
+
+.large-post--video-post {
+  .post__image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .post__image-container::after {
+    content: url("../img/a-icon-play.svg");
+    position: absolute;
   }
 }
 
