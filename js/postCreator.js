@@ -6,10 +6,10 @@ class PostCreator {
     this.postCreationForm.addEventListener('submit', this.handleFormSubmit);
     this.helbBtn = this.postCreationForm.querySelector('.form__show-help');
     this.helbBtn.addEventListener('click', this.handleShowHelp);
+    this.errorsContainer = this.postCreationForm.querySelector('.form__errors');
   }
 
   apiClient = new ApiClient();
-  errorsContainer = this.postCreationForm.querySelector('.form__errors');
 
   getPostsLength = async () => {
     const posts = await this.apiClient.getAllPosts();
@@ -56,11 +56,13 @@ class PostCreator {
   };
 
   formatPostData = async postData => {
+    // if description doesn't include any paragraph we'll wrap all description in one paragraph
     const paragraphRegExp = /<[/p]+>/gmi;
     if (!paragraphRegExp.test(postData.description)) {
       postData.description = `<p>${postData.description}</p>`;
     }
 
+    // adding classes for stylization
     postData.description = postData.description
       .replace(/<p>/gm, '<p class="post__text">')
       .replace(/<h[1-5]>/gm, '<h2 class="post__secondary-headline">');

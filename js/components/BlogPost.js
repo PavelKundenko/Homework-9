@@ -2,6 +2,7 @@ import { Post } from './Post.js';
 
 export class BlogPost extends Post {
   formatShortDescription = (description, type) => {
+    // removing tags from the description
     description = description.replace(/<[/a-z1-5\s="'_-]+>/gmi, '');
 
     const maxDescriptionLength = {
@@ -22,8 +23,8 @@ export class BlogPost extends Post {
     const { id, title, author, authorAvatar, description, pictureLink, type, date, timeToRead, comments, rate } = this._postData;
     const postHTML = `
       <div class="post blog-post blog-post--${type}-post" data-id="${id}">
-        ${
-      type !== 'text'
+      ${
+        pictureLink
         ? `<div class="post__image-container"><img class="post__image" src="${pictureLink}" alt="Post Image"></div>`
         : ''
       }

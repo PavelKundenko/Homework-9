@@ -2,6 +2,7 @@ import { Post } from './Post.js';
 
 export class LatestPost extends Post {
   formatShortDescription = (description, type) => {
+    // removing tags from the description
     description = description.replace(/<[/a-z1-5\s="'_-]+>/gmi, '');
     const MAX_DESCRIPTION_LENGTH = type === 'text' ? 600 : 207;
     return description.length > MAX_DESCRIPTION_LENGTH ? `${description.substring(0, MAX_DESCRIPTION_LENGTH)}…` : description;
