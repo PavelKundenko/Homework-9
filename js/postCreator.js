@@ -2,13 +2,14 @@ import { ApiClient } from './helpers/ApiClient.js';
 
 class PostCreator {
   constructor (form) {
-    this.apiClient = new ApiClient();
     this.postCreationForm = form;
     this.postCreationForm.addEventListener('submit', this.handleFormSubmit);
     this.helbBtn = this.postCreationForm.querySelector('.form__show-help');
     this.helbBtn.addEventListener('click', this.handleShowHelp);
-    this.errorsContainer = this.postCreationForm.querySelector('.form__errors');
   }
+
+  apiClient = new ApiClient();
+  errorsContainer = this.postCreationForm.querySelector('.form__errors');
 
   getPostsLength = async () => {
     const posts = await this.apiClient.getAllPosts();
