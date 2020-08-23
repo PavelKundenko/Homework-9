@@ -1406,3 +1406,76 @@ textarea:focus {
 .tags-block {
   padding-right: 10px;
 }
+
+.posts-search {
+  @include make-row();
+  &-container {
+    @include make-sm-column(8);
+    @include make-md-column(10);
+  }
+
+  &__sidebar {
+    @include make-sm-column(4);
+    @include make-md-column(2);
+  }
+
+  &__authors-list {
+    display: flex;
+    list-style: none;
+  }
+
+  &__author {
+    margin-top: 15px;
+    margin-right: 15px;
+
+  }
+
+  &__author-tag {
+    padding: 5px 15px;
+    border: 1px solid map_get($fontColors, primaryColor);
+    border-radius: 5px;
+    transition: all .2s;
+    cursor: pointer;
+    &:hover {
+      background-color: map_get($backgroundColors, primaryBack);
+      color: map_get($fontColors, secondaryWhiteColor);
+    }
+  }
+
+  &__author--active .posts-search__author-tag {
+    background-color: map_get($backgroundColors, primaryBack);
+    color: map_get($fontColors, secondaryWhiteColor);
+  }
+
+  &__posts-list {
+    display: flex;
+    list-style: none;
+  }
+
+  &__post-name {
+    font-family: $HindMedium;
+    font-size: $smallFontSize;
+    padding: 5px 15px;
+    margin-top: 15px;
+    margin-right: 15px;
+    cursor: pointer;
+    &:hover {
+      color: map_get($fontColors, darkGreyColor);
+      text-decoration: underline;
+    }
+  }
+  &__authors-list--vertical {
+    flex-direction: column;
+    .posts-search__posts-list {
+      flex-direction: column;
+    }
+  }
+
+  &__post {
+    width: 100%;
+    margin: 20px 0;
+    padding: 10px;
+    min-height: 50vh;
+    border: 1px solid map_get($borderColors, greyBorder);
+  }
+}
