@@ -1,4 +1,8 @@
 @media (max-width: 991px) {
+  .header .navbar .navbar__list-item {
+    margin-left: 25px;
+  }
+
   .video,
   .latest-post,
   .photo-card {
@@ -29,6 +33,19 @@
     margin-left: 15px;
   }
 
+  .navbar {
+    display: flex;
+    justify-content: flex-end;
+
+    .navbar__list {
+      display: none;
+    }
+
+    .navbar__burger {
+      display: block;
+    }
+  }
+
   .info-section {
     padding-top: 50px;
   }
@@ -55,17 +72,8 @@
 }
 
 @media (max-width: 480px) {
-  .navbar {
-    display: flex;
-    justify-content: flex-end;
-
-    .navbar__list {
-      display: none;
-    }
-
-    .navbar__burger {
-      display: block;
-    }
+  .wrapper {
+    padding-bottom: 125px;
   }
 
   .testimonials {
@@ -93,6 +101,7 @@
   }
 
   .footer-content {
+    flex-direction: column;
     text-align: center;
 
     .icon {

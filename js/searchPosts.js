@@ -45,7 +45,7 @@ class AuthorsMenu {
     if (this.authorsList.querySelector('.posts-search__author--active') !== targetElem) {
       this.removeActiveAuthor();
       const posts = this.posts.filter(postData => postData.author === name);
-      const html = posts.map(postData => `<li class="posts-search__post-name" data-id="${postData.id}">${postData.title}</li>`);
+      const html = posts.map(postData => `<li class="posts-search__post-name" data-id="${postData.id}">${postData.title}</li>`).join('');
 
       targetElem.classList.add('posts-search__author--active');
       const postsList = this.vertical ? targetElem.querySelector('.posts-search__posts-list') : this.authorsList.nextElementSibling;
