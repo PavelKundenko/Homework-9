@@ -1,4 +1,12 @@
 export class ApiClient {
+  constructor () {
+    if (ApiClient.instance) {
+      return ApiClient.instance;
+    }
+    ApiClient.instance = this;
+    return this;
+  }
+
   baseUrl = 'http://localhost:3000/api';
 
   getAllPosts = async () => await fetch(`${this.baseUrl}/list`).then(response => response.json());
