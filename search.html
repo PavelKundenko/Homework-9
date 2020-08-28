@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/main.css">
-  <title>Blog page</title>
+  <title>Search posts</title>
 </head>
 <body>
 <div class="wrapper">
@@ -15,27 +15,27 @@
         <ul class="navbar__list">
           <li class="navbar__list-item"><a href="index.html#home" class="navbar__link">Home</a></li>
           <li class="navbar__list-item"><a href="index.html#portfolioSection" class="navbar__link">Portfolio</a></li>
-          <li class="navbar__list-item"><a href="#blogSection" class="navbar__link">Blog</a></li>
+          <li class="navbar__list-item"><a href="blog.html#blogSection" class="navbar__link">Blog</a></li>
           <li class="navbar__list-item"><a href="#" class="navbar__link">Pages</a></li>
           <li class="navbar__list-item"><a href="index.html#aboutSection" class="navbar__link">About</a></li>
           <li class="navbar__list-item"><a href="index.html#contanctSection" class="navbar__link">Contact</a></li>
           <li class="navbar__list-item"><a href="create-post.html" class="navbar__link">Add post</a></li>
-          <li class="navbar__list-item"><a href="search.html" class="navbar__link">Search post</a></li>
         </ul>
         <div class="navbar__burger">&equiv;</div>
       </nav>
     </header>
     <main class="main">
-      <section class="blog info-section" id="blogSection">
-        <h2 class="info-section__headline">Blog<span class="headline-underline"></span></h2>
-        <div class="search-container">
-          <div class="search">
-            <input class="search__input" type="search" placeholder="Search by author">
+      <section class="info-section">
+        <h2 class="info-section__headline">Search authors<span class="headline-underline"></span></h2>
+        <div class="posts-search">
+          <div class="posts-search-container">
+            <ul class="posts-search__authors-list">Loading...</ul>
+            <ul class="posts-search__posts-list"></ul>
+            <div class="posts-search__post post"></div>
           </div>
-        </div>
-        <div class="blog__posts"></div>
-        <div class="blog-read-more">
-          <button class="read-more__button">Read more</button>
+          <aside class="posts-search__sidebar">
+            <ul class="posts-search__authors-list posts-search__authors-list--vertical">Loading...</ul>
+          </aside>
         </div>
       </section>
     </main>
@@ -54,6 +54,7 @@
     </div>
   </footer>
 </div>
-<script type="module" src="js/renderBlog.js"></script>
+<script type="module" src="js/searchPosts.js"></script>
 </body>
 </html>
+

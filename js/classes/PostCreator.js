@@ -1,6 +1,6 @@
-import { ApiClient } from './helpers/ApiClient.js';
+import { ApiClient } from '../helpers/ApiClient.js';
 
-class PostCreator {
+export class PostCreator {
   constructor (form) {
     this.postCreationForm = form;
     this.postCreationForm.addEventListener('submit', this.handleFormSubmit);
@@ -96,6 +96,3 @@ class PostCreator {
     }
   }
 }
-
-const postCreator = new PostCreator(document.querySelector('.create-post-form'));
-console.log(postCreator); // just for an avoiding linter error
