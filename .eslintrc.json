@@ -1,18 +1,23 @@
 {
-
     "env": {
         "browser": true,
         "es2020": true
     },
-    "extends": [
-        "standard"
-    ],
+    "extends": ["google"],
     "parser": "babel-eslint",
     "parserOptions": {
         "ecmaVersion": 11,
         "sourceType": "module"
     },
     "rules": {
-        "semi": ["error", "always"]
+        "require-jsdoc": "off",
+        "no-invalid-this": "off",
+        //        "semi": ["error", "always"],
+//        "comma-dangle": ["error", {
+//            "arrays": "always-multiline",
+//            "objects": "always-multiline"
+//        }],
+//        "arrow-parens": ["error", "always"],
+        "max-len": ["error", { "code": 100 }]
     }
 }

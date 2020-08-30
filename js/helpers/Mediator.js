@@ -15,11 +15,11 @@ export class Mediator {
 
   publish = (event, data) => {
     if (this.subscribers[event]) {
-      this.subscribers[event].forEach(callback => callback(data));
+      this.subscribers[event].forEach((callback) => callback(data));
     }
   };
 
-  get methods () {
-    return { subscribe: this.subscribe, unsubscribe: this.unsubscribe, publish: this.publish };
+  get methods() {
+    return {subscribe: this.subscribe, unsubscribe: this.unsubscribe, publish: this.publish};
   }
 }
