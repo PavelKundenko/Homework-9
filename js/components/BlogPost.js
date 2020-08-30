@@ -1,15 +1,15 @@
-import { Post } from './Post.js';
+import {Post} from './Post.js';
 
 export class BlogPost extends Post {
   formatShortDescription = (description, type) => {
-    // removing tags from the description
-    description = description.replace(/<[/a-z1-5\s="'_-]+>/gmi, '');
+    const tagRegExp = /<[/a-z1-5\s="'_-]+>/gmi;
+    description = description.replace(tagRegExp, '');
 
     const maxDescriptionLength = {
       AUDIO: 125,
       VIDEO: 210,
       PHOTO: 220,
-      TEXT: 550
+      TEXT: 550,
     };
 
     if (description.length > maxDescriptionLength[type.toUpperCase()]) {
@@ -20,13 +20,27 @@ export class BlogPost extends Post {
   };
 
   renderPost = () => {
-    const { id, title, author, authorAvatar, description, pictureLink, type, date, timeToRead, comments, rate } = this._postData;
+    const {
+      id,
+      title,
+      author,
+      authorAvatar,
+      description,
+      pictureLink,
+      type,
+      date,
+      timeToRead,
+      comments,
+      rate,
+    } = this._postData;
     const postHTML = `
       <div class="post blog-post blog-post--${type}-post" data-id="${id}">
       ${
-        pictureLink
-        ? `<div class="post__image-container"><img class="post__image" src="${pictureLink}" alt="Post Image"></div>`
-        : ''
+        pictureLink ?
+        `<div class="post__image-container">
+            <img class="post__image" src="${pictureLink}" alt="Post Image">
+          </div>` :
+        ''
       }
         <div class="post__type"></div>
         <article class="post__content">
@@ -36,7 +50,9 @@ export class BlogPost extends Post {
               <h4 class="post__author-name">${author}</h4>
               <div class="post__details">
                 <time datetime="2019-11-20">${this.formatDate(new Date(date))}</time>
-                <span class="middot">&middot;</span> ${timeToRead} min read <span class="middot">&middot;</span>
+                <span class="middot">&middot;</span> 
+                ${timeToRead} min read
+                <span class="middot">&middot;</span>
                 <img src="img/a-icon-comment.svg" alt="Comment icon"> ${comments.length}
                 <div class="rate">
                   ${this.convertRateToHtml(rate)}

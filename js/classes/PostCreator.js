@@ -13,13 +13,16 @@ export class PostCreator {
 
   getPostsLength = async () => {
     const posts = await this.apiClient.getAllPosts();
+
     return posts.length;
   };
 
-  countTimeForReading = textData => {
-    const AVERAGE_READING_SPEED = 160;
+  static AVERAGE_READING_SPEED = 160;
+
+  countTimeForReading = (textData) => {
     const wordsQuantity = textData.split(' ').length;
-    return Math.round(wordsQuantity / AVERAGE_READING_SPEED);
+
+    return Math.round(wordsQuantity / PostCreator.AVERAGE_READING_SPEED);
   };
 
   handleShowHelp = () => {
@@ -27,24 +30,29 @@ export class PostCreator {
     helpBlock.classList.toggle('form__help--hidden');
   };
 
-  showError = errorMessage => this.errorsContainer.insertAdjacentHTML('beforeend', errorMessage);
+  showError = (errorMessage) => this.errorsContainer.insertAdjacentHTML('beforeend', errorMessage);
 
   hideErrors = () => {
     this.errorsContainer.innerHTML = '';
   };
 
-  extractFormData = () => [...this.postCreationForm].reduce((data, formElem) => {
-    const currentData = data;
-    if (formElem.type !== 'submit') {
-      currentData[formElem.name] = formElem.value.trim();
-    }
-    return currentData;
-  }, {});
+  extractFormData = () => (
+    Array.from(this.postCreationForm).reduce((data, formElement) => {
+      if (formElement.type !== 'submit') {
+        return {
+          ...data,
+          [formElement.name]: formElement.value.trim(),
+        };
+      } else {
+        return data;
+      }
+    }, {})
+  );
 
-  validateForm = postData => {
+  validateForm = (postData) => {
     const validationResult = {
       isValid: true,
-      errors: ''
+      errors: '',
     };
 
     const postTitleRegExp = /^[A-Z][a-z\s.,:!?-]{1,19}/gm;
@@ -55,14 +63,12 @@ export class PostCreator {
     return validationResult;
   };
 
-  formatPostData = async postData => {
-    // if description doesn't include any paragraph we'll wrap all description in one paragraph
+  formatPostData = async (postData) => {
     const paragraphRegExp = /<[/p]+>/gmi;
     if (!paragraphRegExp.test(postData.description)) {
       postData.description = `<p>${postData.description}</p>`;
     }
 
-    // adding classes for stylization
     postData.description = postData.description
       .replace(/<p>/gm, '<p class="post__text">')
       .replace(/<h[1-5]>/gm, '<h2 class="post__secondary-headline">');
@@ -74,11 +80,11 @@ export class PostCreator {
       timeToRead: this.countTimeForReading(postData.description) || 1,
       comments: [],
       date: new Date(postData.date),
-      ...postData
+      ...postData,
     };
   };
 
-  handleFormSubmit = async event => {
+  handleFormSubmit = async (event) => {
     event.preventDefault();
     const postData = this.extractFormData();
     const validationResult = this.validateForm(postData);
