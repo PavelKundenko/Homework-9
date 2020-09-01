@@ -1,21 +1,17 @@
-import { ApiClient } from '../helpers/ApiClient.js';
+import {ApiClient} from '../helpers/ApiClient.js';
 
 export class PostCreator {
-  constructor (form) {
-    this.postCreationForm = form;
-    this.postCreationForm.addEventListener('submit', this.handleFormSubmit);
-    this.helbBtn = this.postCreationForm.querySelector('.form__show-help');
-    this.helbBtn.addEventListener('click', this.handleShowHelp);
-    this.errorsContainer = this.postCreationForm.querySelector('.form__errors');
-  }
-
   apiClient = new ApiClient();
 
-  getPostsLength = async () => {
-    const posts = await this.apiClient.getAllPosts();
+  constructor(form) {
+    this.postCreationForm = form;
+    this.helbBtn = this.postCreationForm.querySelector('.form__show-help');
+    this.errorsContainer = this.postCreationForm.querySelector('.form__errors');
 
-    return posts.length;
-  };
+    this.postCreationForm.addEventListener('submit', this.handleFormSubmit);
+
+    this.helbBtn.addEventListener('click', this.handleShowHelp);
+  }
 
   static AVERAGE_READING_SPEED = 160;
 
@@ -23,6 +19,12 @@ export class PostCreator {
     const wordsQuantity = textData.split(' ').length;
 
     return Math.round(wordsQuantity / PostCreator.AVERAGE_READING_SPEED);
+  };
+
+  getPostsLength = async () => {
+    const posts = await this.apiClient.getAllPosts();
+
+    return posts.length;
   };
 
   handleShowHelp = () => {
@@ -56,22 +58,25 @@ export class PostCreator {
     };
 
     const postTitleRegExp = /^[A-Z][a-z\s.,:!?-]{1,19}/gm;
+
     if (!postTitleRegExp.test(postData.title)) {
       validationResult.isValid = false;
       validationResult.errors += 'Title is not valid.<br>';
     }
+
     return validationResult;
   };
 
   formatPostData = async (postData) => {
     const paragraphRegExp = /<[/p]+>/gmi;
+
     if (!paragraphRegExp.test(postData.description)) {
       postData.description = `<p>${postData.description}</p>`;
     }
 
     postData.description = postData.description
-      .replace(/<p>/gm, '<p class="post__text">')
-      .replace(/<h[1-5]>/gm, '<h2 class="post__secondary-headline">');
+        .replace(/<p>/gm, '<p class="post__text">')
+        .replace(/<h[1-5]>/gm, '<h2 class="post__secondary-headline">');
 
     return {
       id: await this.getPostsLength(),
@@ -86,19 +91,24 @@ export class PostCreator {
 
   handleFormSubmit = async (event) => {
     event.preventDefault();
+
     const postData = this.extractFormData();
     const validationResult = this.validateForm(postData);
+
     if (!validationResult.isValid) {
       this.showError(validationResult.errors);
     } else {
       this.hideErrors();
+
       const formattedData = await this.formatPostData(postData);
+
       this.apiClient.addNewPost(formattedData)
-        .then(() => {
-          const newPath = location.pathname.replace(/[a-zA-Z-]+\.html/gm, 'post.html');
-          location.href = `${newPath}?id=${formattedData.id}`;
-        })
-        .catch(() => this.showError('Server error has occurred. Try again later.'));
+          .then(() => {
+            const newPath = location.pathname.replace(/[a-zA-Z-]+\.html/gm, 'post.html');
+
+            location.href = `${newPath}?id=${formattedData.id}`;
+          })
+          .catch(() => this.showError('Server error has occurred. Try again later.'));
     }
   }
 }

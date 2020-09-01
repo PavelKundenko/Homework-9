@@ -53,6 +53,7 @@ export class LargePost extends Post {
       timeToRead,
       rate,
     } = this._postData;
+
     const postHTML = `
       <article class="post large-post large-post--${type}-post">
          <h1 class="post__primary-headline">${title}</h1>
@@ -105,6 +106,7 @@ export class LargePost extends Post {
         </footer>
        </article>
     `;
+
     this._postContainer.insertAdjacentHTML('afterbegin', postHTML);
   };
 }

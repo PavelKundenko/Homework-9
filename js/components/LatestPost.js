@@ -22,6 +22,7 @@ export class LatestPost extends Post {
       type,
       timeToRead,
     } = this._postData;
+
     const postHtml = `
       <article class="latest-post latest-post--${type}-post">
         ${pictureLink ?
@@ -42,6 +43,7 @@ export class LatestPost extends Post {
         </div>
       </article>
     `;
+
     this._postContainer.insertAdjacentHTML('beforeend', postHtml);
   }
 }
