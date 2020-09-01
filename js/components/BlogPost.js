@@ -1,19 +1,20 @@
 import {Post} from './Post.js';
 
 export class BlogPost extends Post {
+  static MAX_DESCRIPTION_LENGTH = {
+    AUDIO: 125,
+    VIDEO: 210,
+    PHOTO: 220,
+    TEXT: 550,
+  };
+
   formatShortDescription = (description, type) => {
     const tagRegExp = /<[/a-z1-5\s="'_-]+>/gmi;
+
     description = description.replace(tagRegExp, '');
 
-    const maxDescriptionLength = {
-      AUDIO: 125,
-      VIDEO: 210,
-      PHOTO: 220,
-      TEXT: 550,
-    };
-
-    if (description.length > maxDescriptionLength[type.toUpperCase()]) {
-      return `${description.substring(0, maxDescriptionLength[type.toUpperCase()])} ...`;
+    if (description.length > BlogPost.MAX_DESCRIPTION_LENGTH[type.toUpperCase()]) {
+      return `${description.substring(0, BlogPost.MAX_DESCRIPTION_LENGTH[type.toUpperCase()])} ...`;
     } else {
       return description;
     }
@@ -33,6 +34,7 @@ export class BlogPost extends Post {
       comments,
       rate,
     } = this._postData;
+
     const postHTML = `
       <div class="post blog-post blog-post--${type}-post" data-id="${id}">
       ${
@@ -67,6 +69,7 @@ export class BlogPost extends Post {
         </article>
       </div>
     `;
+
     this._postContainer.insertAdjacentHTML('beforeend', postHTML);
   };
 }

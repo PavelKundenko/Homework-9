@@ -1,13 +1,17 @@
 export class ApiClient {
+  static BASE_URL = 'http://localhost:3000/api';
+
+  static instance = null;
+
   constructor() {
     if (ApiClient.instance) {
       return ApiClient.instance;
-    }
-    ApiClient.instance = this;
-    return this;
-  }
+    } else {
+      ApiClient.instance = this;
 
-  static BASE_URL = 'http://localhost:3000/api';
+      return this;
+    }
+  }
 
   getAllPosts = () => fetch(`${ApiClient.BASE_URL}/list`).then((response) => response.json());
 

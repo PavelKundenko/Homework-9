@@ -6,13 +6,13 @@ export class Post {
 
   static MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'june', 'july', 'aug', 'sep', 'oct', 'dec'];
 
+  static MAX_RATE = 5;
+
   formatDate = (date) => {
     const addZero = (num) => num < 10 ? '0' + num : num;
 
     return `${addZero(date.getDate())} ${Post.MONTHS[date.getMonth()]}, ${date.getFullYear()}`;
   };
-
-  static MAX_RATE = 5;
 
   convertRateToHtml = (rate) => {
     const rateStarsElements = {
@@ -22,6 +22,7 @@ export class Post {
     };
 
     let rateHtml = rateStarsElements.star.repeat(rate);
+
     if (Number.isInteger(rate)) {
       rateHtml += rateStarsElements.emptyStar.repeat(Post.MAX_RATE - rate);
     } else {
